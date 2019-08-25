@@ -4,8 +4,12 @@ EMAIL: hmtrung901@gmail.com
 PASSWORD: 12345678x@X
 PHONE: '0123456789'
 NAME: Trung Ho
-MONTH: March
-DAY: '20'
-YEAR: '2017'
+MONTH: December
+DAY: '19'
+YEAR: '1990'
 GENDER: female
 EMAIL_VALIDATION_CODE: '123456'
+SEARCH_STRING: Kindle PaperWhite
+SEARCH_BOX: xpath://input[@id='q']
+SEARCH_BUTTON: xpath://button[@class='search-box__button--1oH7']
+EMAIL_BOX: xpath://input[@placeholder="Please enter your Phone Number or Email"]

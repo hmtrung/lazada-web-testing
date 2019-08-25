@@ -3,14 +3,19 @@ Library       SeleniumLibrary
 Variables     Data.yaml  
 
 *** Keywords ***
+Open Home Page
+    Open Browser    ${SERVER}    ${BROWSER}
+    Maximize Browser Window
+    
 Open Login Page
     Open Browser    ${SERVER}    ${BROWSER}
     Maximize Browser Window
-    Click Link    login 
+    Click Link    login
+    Page Should Contain Element    xpath://h3[contains(.,'Welcome to Lazada! Please login.')]
 
 Input Email
     [Arguments]    ${input}
-    Input Text    xpath://input[@placeholder="Please enter your Phone Number or Email"]    ${input}
+    Input Text    ${EMAIL_BOX}    ${input}
 
 Input Password
     [Arguments]    ${password}
@@ -61,23 +66,37 @@ Sign Up With Email
     
 Sign Up With Mobile
     Click Button    Sign up with Mobile
-    
+        
 Select Month
     [Arguments]    ${month}
     Click Element    xpath://span[@class='next-select-placeholder'][contains(.,'Month')]
+    Scroll Element Into View    xpath://div[@class='next-menu ver next-overlay-inner animated expandInDown next-select-menu next-position-tl']
     Click Element    xpath://li[contains(.,'${month}')]
     
 Select Day
     [Arguments]    ${day}
     Click Element    xpath://span[@class='next-select-placeholder'][contains(.,'Day')]
+    Scroll Element Into View    xpath://div[@class='next-menu ver next-overlay-inner animated expandInDown next-select-menu next-position-tl']
     Click Element    xpath://li[contains(.,'${day}')]
     
 Select Year
-    [Arguments]    ${year}
+    [Arguments]    ${year}    
     Click Element    xpath://span[@class='next-select-placeholder'][contains(.,'Year')]
+    Scroll Element Into View    xpath://div[@class='next-menu ver next-overlay-inner animated expandInDown next-select-menu next-position-tl']
     Click Element    xpath://li[contains(.,'${year}')]
     
 Select Gender
     [Arguments]    ${gender}
     Click Element    xpath://span[@class='next-select-inner'][contains(.,'Select')]
     Click Element    xpath://li[@value='${gender}']
+    
+Input Search String
+    [Arguments]    ${search_string}
+    Input Text    ${SEARCH_BOX}    ${search_string}
+    
+Click Search button
+    Click Element    ${SEARCH_BUTTON}
+    
+Select Product By Index
+    [Arguments]    ${index}
+    Click Element    xpath:(//img[@type='product'])[${index}]
